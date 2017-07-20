@@ -2,6 +2,7 @@ var path = require('path');
 var utils = require('./utils');
 var config = require('../config');
 var vueLoaderConfig = require('./vue-loader.conf');
+var webpack = require('webpack');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
@@ -17,10 +18,13 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
   },
   resolve: {
-    extensions: [ '.js', '.json', '.ts' ],
+    extensions: ['.js', '.json', '.ts'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      $: 'jquery',
+      jQuery: 'jquery',
+
     },
   },
   module: {
@@ -30,8 +34,8 @@ module.exports = {
         exclude: /node_modules|vue\/src/,
         loader: 'ts-loader',
         options: {
-          appendTsSuffixTo: [ /\.vue$/ ],
-          configFileName: resolve('src/tsconfig.app.json'),
+          appendTsSuffixTo: [/\.vue$/],
+          configFileName: 'tsconfig.app.json',
         },
       },
       {
@@ -62,4 +66,12 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      Promise: 'es6-promise',
+    }),
+  ],
+
 };

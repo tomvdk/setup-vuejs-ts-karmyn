@@ -13,8 +13,8 @@ rules.push({
   exclude: /node_modules|vue\/src/,
   loader: 'ts-loader',
   options: {
-    appendTsSuffixTo: [ /\.vue$/ ],
-    configFileName: resolve('src/tsconfig.spec.json'),
+    appendTsSuffixTo: [/\.vue$/],
+    configFileName: 'tsconfig.spec.json',
   },
 });
 
