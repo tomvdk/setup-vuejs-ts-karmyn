@@ -1,13 +1,14 @@
+declare var global;
+global.jQuery = global.$ = require('jquery');
+
 import Vue from 'vue';
 import * as Logger from 'js-logger';
 
-import * as $ from "jquery"
-import "bootstrap"
-import "bootstrap-select"
+import 'bootstrap';
+import 'bootstrap-select';
 
 import { local, session } from './core/utils/storage';
 import config from './config';
-
 
 import App from './App.vue';
 import router from './router';
