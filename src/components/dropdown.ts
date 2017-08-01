@@ -22,25 +22,6 @@ import * as $ from "jquery"
             type: Array,
             required: true,
         },
-    },
-    directives: {
-        'selectpicker': {
-            // bind: (el, binding) => { },
-            inserted: (el) => {
-                // console.log(el)
-                $(el).selectpicker();
-            },
-            componentUpdated: (el, binding) => {
-                if (binding.oldValue !== binding.value || binding.oldValue === '') {
-                    $(el).selectpicker('refresh')
-                    $(el).trigger('change');
-                    console.log('selectepicker refresh')
-                }
-            },
-            unbind: (el) => {
-                $(el).selectpicker('destroy')
-            }
-        }
     }
 })
 export default class Dropdown extends Vue {
@@ -59,29 +40,17 @@ export default class Dropdown extends Vue {
     }
 
     created() {
-        console.log(this.options)
+        console.log('in created')
+    }
+
+    mounted() {
+        $(this.$el).selectpicker()
     }
 
     changeSelection(event) {
+        console.log('in changeSelection')
         if (this.selectedOption !== event.target.value && event.target.value !== '') {
             this.$emit('selectionChanged', this.uniqueId, event.target.value);
         }
     }
-
-    // directive('selectpicker', {
-    //   bind: function (el, binding) {
-    //   },
-    //   inserted: function (el) {
-    //     $(el).selectpicker();
-    //   },
-    //   componentUpdated: function (el, binding) {
-    //     //if (binding.oldValue !== binding.value || binding.oldValue === '') {
-    //       $(el).selectpicker('refresh').trigger('change');
-    //       //console.log('selectepicker resfresh')
-    //     //}
-    //   },
-    //   unbind: function (el) {
-    //     $(el).selectpicker('destroy')
-    //   }
-    // })
 }
