@@ -3,7 +3,7 @@ import Component from 'vue-class-component';
 
 @Component({
   template: `
-    <select v-model="selected">
+    <select v-model="selected" @change='changeSelection($event.target.value)''>
       <optgroup label="Picnic">
         <option>Mustard</option>
         <option>Ketchup</option>
@@ -31,11 +31,19 @@ export default class SelectPicker extends Vue {
 
   mounted() {
     const vm = this;
+    console.log(vm.selected);
     $(this.$el).selectpicker();
-    $(this.$el).on('change', function() {
-      vm.$emit('change', $(this).selectpicker('val'));
-    });
+    // $(this.$el).on('change', function () {
+    //   console.log($(this).selectpicker('val'))
+    //   vm.$emit('change', $(this).selectpicker('val'));
+    // });
     $(this.$el).selectpicker('val', this['value']);
+  }
+
+  changeSelection(val) {
+    const vm = this;
+    console.log(val)
+    vm.$emit('change', val);
   }
 
   destroyed() {

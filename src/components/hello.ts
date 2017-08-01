@@ -7,12 +7,14 @@ import { CART_INCREMENT } from '../store/mutation-types';
 
 import Dropdown from "./dropdown.vue";
 import DropdownWithDirective from "./dropdownWithDirective.vue"
+import SelectPicker from "./selectpicker.ts"
 
 @Component(
   {
     components: {
       Dropdown,
-      DropdownWithDirective
+      DropdownWithDirective,
+      'selectpicker': SelectPicker
     }
   },
 )
@@ -156,5 +158,11 @@ export default class Hello extends Vue {
   changeStatusFilter(id, value) {
     this.selectedStatus = value;
     console.log('changed!')
+  }
+
+  changeFilter(val) {
+    this.selectedStatus = val;
+    console.log(val)
+    console.log('in change in hello')
   }
 }
