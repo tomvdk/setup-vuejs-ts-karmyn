@@ -117,7 +117,7 @@ export default class Hello extends Vue {
           "codeValueEndDate": null,
           "rank": 6,
           "isDefault": false,
-          "translation": "Fraud",
+          "translation": "Attention Required",
           "translationStartDate": "2017-01-06T00:00:00"
         },
         {
@@ -127,7 +127,7 @@ export default class Hello extends Vue {
           "codeValueEndDate": null,
           "rank": 7,
           "isDefault": false,
-          "translation": "No fraud",
+          "translation": "No Attention Required",
           "translationStartDate": "2017-01-06T00:00:00"
         },
         {
