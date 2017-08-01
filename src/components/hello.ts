@@ -6,16 +6,18 @@ import { IAppState } from '../store';
 import { CART_INCREMENT } from '../store/mutation-types';
 
 import Dropdown from "./dropdown.vue";
+import DropdownWithDirective from "./dropdownWithDirective.vue"
 
 @Component(
   {
     components: {
-      Dropdown
+      Dropdown,
+      DropdownWithDirective
     }
   },
 )
 export default class Hello extends Vue {
-  selectedStatus: string = "";
+  selectedStatus: string = "0003";
   msg = 'Welcome to Your Vue.js App';
   store: Vuex.Store<IAppState> = this['$store'];
   statusFilters: any =
@@ -153,6 +155,6 @@ export default class Hello extends Vue {
 
   changeStatusFilter(id, value) {
     this.selectedStatus = value;
-    // console.log('changed!')
+    console.log('changed!')
   }
 }

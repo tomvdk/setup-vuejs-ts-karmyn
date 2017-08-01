@@ -21,6 +21,15 @@ import './styles.scss';
 
 import store from './store';
 
+// Setup directives
+import * as directives from "./core/utils/directives";
+
+// register global directives
+Object.keys(directives).forEach(key => {
+  //console.log(directives[key].prototype);
+  Vue.directive(key, directives[key].prototype);
+});
+
 // Setup vue
 Vue.config.productionTip = true;
 

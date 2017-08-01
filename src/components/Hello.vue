@@ -2,7 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>{{ $t("home.hello") }}</p>
-     <dropdown uniqueId="filter" prefix="status" :value="selectedStatus" :options="statusFilters" @selectionChanged="changeStatusFilter"></dropdown>
+    <p class="leftAlign"><span>Dropdown component:</span><dropdown uniqueId="filter" prefix="status" :value="selectedStatus" :options="statusFilters" @selectionChanged="changeStatusFilter"></dropdown></p>
+    <p class="leftAlign"><span>Dropdown component with directive:</span><dropdown-with-directive uniqueId="filter" prefix="status" :value="selectedStatus" :options="statusFilters" @selectionChanged="changeStatusFilter"></dropdown-with-directive></p>     
   </div>
 </template>
 
@@ -20,5 +21,8 @@ export { default } from './hello';
 h1,
 h2 {
   font-weight: normal;
+}
+.leftAlign{
+  text-align: left;
 }
 </style>
